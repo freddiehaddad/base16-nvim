@@ -8,6 +8,7 @@ This plugin works without [base16-shell][2]. However, for hot colorscheme
 switching, it is required.
 
 Demonstration switching between three themes:
+
 https://user-images.githubusercontent.com/6127369/226068278-d6c9b920-176e-4acb-b1c6-e15b43490296.mp4
 
 
