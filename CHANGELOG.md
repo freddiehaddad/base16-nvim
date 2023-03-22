@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/freddiehaddad/base16-nvim/compare/v1.1.0...v1.2.0) (2023-03-22)
+
+
+### Features
+
+* **colorschemes:** adds new colorschemes ([#9](https://github.com/freddiehaddad/base16-nvim/issues/9)) ([933860b](https://github.com/freddiehaddad/base16-nvim/commit/933860be2b6e412bb3bfe8c2a58b765d808cd12a))
+
 ## [1.1.0](https://github.com/freddiehaddad/base16-nvim/compare/v1.0.0...v1.1.0) (2023-03-19)
 
 
