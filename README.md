@@ -38,6 +38,7 @@ require("lazy").setup({
         "freddiehaddad/base16-nvim",
         opts = {},
     }
+})
 ```
 
 ### Manual Mode (specific colorscheme)
@@ -49,6 +50,7 @@ require("lazy").setup({
         "freddiehaddad/base16-nvim",
         opts = { colorscheme: "base16-tokyo-night-dark" },
     }
+})
 ```
 
 ### Hot Mode
@@ -64,6 +66,7 @@ require("lazy").setup({
             },
         }
     }
+})
 ```
 
 If your `theme_file` is not in the default location, update the
