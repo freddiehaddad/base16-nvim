@@ -8,6 +8,14 @@ local default_config = {
 	},
 }
 
+local listeners = {}
+
+local notify_listeners = function(colorscheme)
+	for _, listener in ipairs(listeners) do
+		listener(colorscheme)
+	end
+end
+
 local read_colorscheme_name = function(filename)
 	local f = io.open(filename, "r")
 	if f == nil then
@@ -43,7 +51,14 @@ local setup_hot_reload = function(config)
 	w:start(filename, {}, vim.schedule_wrap(function() on_change() end))
 end
 
+M.listen = function(callback) table.insert(listeners, callback) end
+
 M.setup = function(opts)
+	vim.api.nvim_create_autocmd("ColorScheme", {
+		pattern = "base16-*",
+		callback = notify_listeners,
+	})
+
 	local config = vim.tbl_deep_extend("keep", opts or {}, default_config)
 
 	if config.hot_reload.enabled == false then
