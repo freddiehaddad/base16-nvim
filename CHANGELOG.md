@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.1.0](https://github.com/freddiehaddad/base16-nvim/compare/v2.0.0...v2.1.0) (2023-04-27)
+
+
+### Features
+
+* **notifications:** adds a notification mechanism ([#18](https://github.com/freddiehaddad/base16-nvim/issues/18)) ([57955d6](https://github.com/freddiehaddad/base16-nvim/commit/57955d6867f0574aa759b21965fc0007e6e782c7))
+
+
+### Bug Fixes
+
+* **lint:** silence lua lint errors ([#17](https://github.com/freddiehaddad/base16-nvim/issues/17)) ([32f246c](https://github.com/freddiehaddad/base16-nvim/commit/32f246cd085d84965484e4b663a7bd056a8267cc))
+
 ## [2.0.0](https://github.com/freddiehaddad/base16-nvim/compare/v1.2.0...v2.0.0) (2023-04-14)
 
 
