@@ -43,11 +43,14 @@ local setup_hot_reload = function(config)
 	end
 
 	function on_change()
+		---@diagnostic disable-next-line: need-check-nil
 		w:stop() -- debounce: start/stop
 		set_colorscheme()
+		---@diagnostic disable-next-line: need-check-nil
 		w:start(filename, {}, vim.schedule_wrap(function() on_change() end))
 	end
 	set_colorscheme()
+	---@diagnostic disable-next-line: need-check-nil
 	w:start(filename, {}, vim.schedule_wrap(function() on_change() end))
 end
 
