@@ -72,37 +72,79 @@ require("lazy").setup({
 If your `theme_file` is not in the default location, update the
 `base16_theme_file` field as well.
 
-## Working with Other Plugins
+## Accessing Colorscheme Colors
 
-If you're experiencing other plugins not working with these colorschemes (status
-line plugins are common), you can make use of the global colors. base16-nvim
-colorschemes set the following global variables:
+If you want to make use of the colors for the currently loaded, colorscheme,
+`base16-nvim` sets the following global variables each time a colorscheme is selected.
+
+```vim
+" Formatted in RGB hexadecimal (i.e. FF0000)
+vim.g.base16_gui00 " black
+vim.g.base16_gui01
+vim.g.base16_gui02
+vim.g.base16_gui03
+vim.g.base16_gui04
+vim.g.base16_gui05 " white
+vim.g.base16_gui06
+vim.g.base16_gui07 " bright white
+vim.g.base16_gui08 " red
+vim.g.base16_gui09
+vim.g.base16_gui0A " yellow
+vim.g.base16_gui0B " green
+vim.g.base16_gui0C " cyan
+vim.g.base16_gui0D " blue
+vim.g.base16_gui0E " magenta
+vim.g.base16_gui0F
+```
+
+## Notification of Colorscheme Changes
+
+`base16-nvim` offers a notification mechanism for those needing to receive
+updates whenever the colorscheme changes.
+
+Note that you will only be notified on subsequent colorscheme updates. A
+notification will not be sent for the initial setup.
 
 ```lua
-vim.api.nvim_create_autocmd(
-    "ColorScheme", {
-        pattern = "base16-*",
-        callback = function()
-        local colors = {
-            base00 = "#" .. vim.g.base16_gui00, -- black
-            base01 = "#" .. vim.g.base16_gui01,
-            base02 = "#" .. vim.g.base16_gui02,
-            base03 = "#" .. vim.g.base16_gui03,
-            base04 = "#" .. vim.g.base16_gui04,
-            base05 = "#" .. vim.g.base16_gui05, -- white
-            base06 = "#" .. vim.g.base16_gui06,
-            base07 = "#" .. vim.g.base16_gui07, -- bright white
-            base08 = "#" .. vim.g.base16_gui08, -- red
-            base09 = "#" .. vim.g.base16_gui09,
-            base0A = "#" .. vim.g.base16_gui0A, -- yellow
-            base0B = "#" .. vim.g.base16_gui0B, -- green
-            base0C = "#" .. vim.g.base16_gui0C, -- cyan
-            base0D = "#" .. vim.g.base16_gui0D, -- blue
-            base0E = "#" .. vim.g.base16_gui0E, -- magenta
-            base0F = "#" .. vim.g.base16_gui0F,
-        }
-        end,
-    })
+local update_theme = function(colorscheme)
+    vim.notify("colorscheme changed to " .. colorscheme)
+
+    local theme = {
+        fg = "#" .. vim.g.base16_gui05,
+	bg = "#" .. vim.g.base16_gui00,
+        base00 = "#" .. vim.g.base16_gui00, -- black
+        base01 = "#" .. vim.g.base16_gui01,
+        base02 = "#" .. vim.g.base16_gui02,
+        base03 = "#" .. vim.g.base16_gui03,
+        base04 = "#" .. vim.g.base16_gui04,
+        base05 = "#" .. vim.g.base16_gui05, -- white
+        base06 = "#" .. vim.g.base16_gui06,
+        base07 = "#" .. vim.g.base16_gui07, -- bright white
+        base08 = "#" .. vim.g.base16_gui08, -- red
+        base09 = "#" .. vim.g.base16_gui09,
+        base0A = "#" .. vim.g.base16_gui0A, -- yellow
+        base0B = "#" .. vim.g.base16_gui0B, -- green
+        base0C = "#" .. vim.g.base16_gui0C, -- cyan
+        base0D = "#" .. vim.g.base16_gui0D, -- blue
+        base0E = "#" .. vim.g.base16_gui0E, -- magenta
+        base0F = "#" .. vim.g.base16_gui0F,
+        black = "#" .. vim.g.base16_gui00,
+        skyblue = "#" .. vim.g.base16_gui0D,
+        cyan = "#" .. vim.g.base16_gui0C,
+        green = "#" .. vim.g.base16_gui0B,
+        oceanblue = "#" .. vim.g.base16_gui0D,
+        magenta = "#" .. vim.g.base16_gui0E,
+        orange = "#" .. vim.g.base16_gui0A,
+        red = "#" .. vim.g.base16_gui08,
+        violet = "#" .. vim.g.base16_gui0E,
+        white = "#" .. vim.g.base16_gui05,
+        yellow = "#" .. vim.g.base16_gui0A,
+    }
+
+    require("feline").use_theme(colors)
+end
+
+require("base16-nvim").listen(update_theme)
 ```
 
 [1]: https://github.com/neovim/neovim
