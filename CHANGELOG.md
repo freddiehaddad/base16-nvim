@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/freddiehaddad/base16-nvim/compare/v2.1.0...v2.2.0) (2023-05-07)
+
+
+### Features
+
+* **theme:** add evenok-dark theme ([58963d3](https://github.com/freddiehaddad/base16-nvim/commit/58963d31334b8c9083ea2fd751922efd0dd2f858))
+
 ## [2.1.0](https://github.com/freddiehaddad/base16-nvim/compare/v2.0.0...v2.1.0) (2023-04-27)
 
 
